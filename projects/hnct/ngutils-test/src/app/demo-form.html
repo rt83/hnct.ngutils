@@ -1,0 +1,47 @@
+<br/>
+<div>This form when submit will navigate to a new URL with the search data parameter containing the form data. The data is 
+    automatically filled into the form. When navigation is successful, the search method will be called with the decoded data.
+</div>
+<br/>
+<div *fflow="let fum by buildForm; fflow as f; nav : navigate; submit : search"  [formGroup]="fum" [ferrcoord]="f" [(ferror)]="formError">
+    <div>
+        <span *ngIf="formError">{{formError!.msg}}</span>
+    </div>
+    <div>
+        <label>Username</label><input formControlName="username" [(ferror)]="usernameError" />
+        <span *ngIf="usernameError">{{usernameError!.msg}}</span>
+    </div>
+    <div>
+        <label>Password</label><input formControlName="password" [(ferror)]="passwordError" />
+        <span *ngIf="passwordError">{{passwordError!.msg}}</span>
+    </div>
+
+    <div>
+        <button [disabled]="!f.canSubmit()" [form-flow-submit]="f">Submit</button>
+        <button [disabled]="!f.dirty()" (click)="f.reset()">Reset</button>
+    </div>
+
+</div>
+
+<br/>
+<div>This form when submit will navigate will trigger the search method directly. This search form use paramKey == 'searchForm2' to avoid filling data from searchData parameter of the above form.</div>
+<br/>
+<div *fflow="let fum by buildForm; fflow as f; noNav : true; submit : search; paramKey:'searchForm2'"  [formGroup]="fum" [ferrcoord]="f" [(ferror)]="formError">
+    <div>
+        <span *ngIf="formError">{{formError!.msg}}</span>
+    </div>
+    <div>
+        <label>Username</label><input formControlName="username" [(ferror)]="usernameError" />
+        <span *ngIf="usernameError">{{usernameError!.msg}}</span>
+    </div>
+    <div>
+        <label>Password</label><input formControlName="password" [(ferror)]="passwordError" />
+        <span *ngIf="passwordError">{{passwordError!.msg}}</span>
+    </div>
+
+    <div>
+        <button [disabled]="!f.canSubmit()" [form-flow-submit]="f">Submit</button>
+        <button [disabled]="!f.dirty()" (click)="f.reset()">Reset</button>
+    </div>
+
+</div>

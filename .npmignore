@@ -1,6 +1,0 @@
-/src
-/test
-/webpack
-/tsconfig*.*
-node_modules
-/dist/dev
